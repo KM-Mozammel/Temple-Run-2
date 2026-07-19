@@ -1,28 +1,36 @@
 ### সাধারণ পরিচিতি (General Information):
     গেমের নাম: অবিরাম দৌড়।
     গেমের ধরণ (Genre): এন্ডলেস রানার (Temple Run-এর মতো)।
-    আর্ট স্টাইল (Art Style): রিয়ালিস্টিক (Realistic)।
+    আর্ট স্টাইল (Art Style): রিয়ালিস্টিক (Realistic)। 
 
     গেমের গল্প (Game Story): 
         এক প্রাচীন মন্দিরের লুকানো ধন চুরি করার পর, মন্দিরের রক্ষী দানব আপনার পিছু নেয়। এখন আপনার সামনে একটাই রাস্তা, তা হলো অবিরাম দৌড়ে সেই দানবের হাত থেকে নিজের জীবন বাঁচানো।
 
-    গেমের নিয়ম ও স্কোরিং সিস্টেম (Rules & Scoring):
-        মূল নিয়ম: প্লেয়ারকে অবিরাম সামনের দিকে দৌড়াতে হবে এবং মন্দিরের রক্ষী দানব থেকে বাঁচতে হবে। সামনে আসা বিভিন্ন বাধা যেমন পাথর বা গাছের শিকড় এড়িয়ে চলতে হবে।
+    গেমের নিয়ম ও স্কোরিং সিস্টেম (Rules & Scoring): 
+    * মূল নিয়ম: প্লেয়ারকে অবিরাম সামনের দিকে দৌড়াতে হবে এবং মন্দিরের রক্ষী দানব থেকে বাঁচতে হবে। সামনে আসা বিভিন্ন বাধা যেমন পাথর বা গাছের শিকড় এড়িয়ে চলতে হবে।
+        * নিচু বাধা (Low Obstacle): যেমন মাটির কাছাকাছি থাকা পাথর বা গাছের শিকড়। এগুলোকে অতিক্রম করার জন্য প্লেয়ারকে অবশ্যই **লাফ (Jump)** দিতে হবে।
+        * উঁচু বাধা (High Obstacle): যেমন শূন্যে ভাসমান প্রাচীন মন্দিরের পিলার বা গাছের নিচু ডাল। এগুলোর নিচ দিয়ে পার হওয়ার জন্য প্লেয়ারকে অবশ্যই মাটির সাথে **স্লাইড (Slide)** করতে হবে।
 
-        স্কোরিং সিস্টেম: প্লেয়ারের মোট স্কোর দুটি বিষয়ের ওপর নির্ভর করবে:
-            ১. মন্দিরে কতখানি দূরত্ব (Distance) অতিক্রম করা হয়েছে।
-            ২. পথ থেকে তিনি কতগুলি কয়েন (Coins) সংগ্রহ করেছেন।
-            ** যত বেশি দূরত্ব অতিক্রম করা যাবে এবং যত বেশি কয়েন সংগ্রহ করা হবে, প্লেয়ারের স্কোর তত বাড়বে।
+        স্কোরিং সিস্টেম: প্লেয়ারের মোট স্কোর দুটি মিটার রয়েচে-
+            ১. মন্দিরে কতখানি দূরত্ব (Distance) অতিক্রম করা হয়েছে। এটি ডিস্টেন্স।
+            ২. পথ থেকে তিনি কতগুলি অবস্টাকল অতিক্রম করেছেন। এটাই স্কোর।
+            ** যত বেশি দূরত্ব অতিক্রম করা হবে এবং যত বেশি অবস্টাকল অতিক্রম করা হয়েচে, তত বাড়বে।
+
+        স্কোরিং শর্তাবলী (Scoring Logic): প্লেয়ার কোনো একটি বাধা অতিক্রম করলে স্কোর **+১** হবে কিনা, তা সম্পূর্ণভাবে ৩টি নির্দিষ্ট শর্তের ওপর নির্ভর করছে:
+            *লেন ম্যাচিং (Same Lane Check):** প্লেয়ার ঠিক যে লেনে দৌড়াচ্ছে, অবস্ট্যাকলটিও যদি ঠিক **একই লেনে** থাকে, তবেই কেবল স্কোর কাউন্টের হিসাব শুরু হবে।
+            *সঠিক মেকানিক্স অ্যাকশন (Correct Action Check): প্লেয়ার যদি লো-অবস্ট্যাকলের লেনে থাকে, তবে তাকে **জাম্প** করে সেটি পার হতে হবে। তাহলেই স্কোর **+১** হবে।
+            *প্লেয়ার যদি হাই-অবস্ট্যাকলের লেনে থাকে, তবে তাকে **স্লাইড** করে সেটি পার হতে হবে। তাহলেই স্কোর **+১** হবে।
+
+            * ভিন্ন লেনের ক্ষেত্রে (Different Lane = No Points): অবস্ট্যাকল যদি মিডল লেনে থাকে আর প্লেয়ার যদি আগে থেকেই রাইট লেনে (বা লেফট লেনে) থাকে, তবে প্লেয়ারকে কোনো জাম্প বা স্লাইড করতে হচ্ছে না—সে অনায়াসে পাশ দিয়ে চলে যাচ্ছে। এই ক্ষেত্রে প্লেয়ার নিরাপদে বেঁচে গেলেও **কোনো স্কোর (No Point) পাবে না।
 
     গেমের কন্ট্রোলস (Game Controls):
-
+        
         বাঁ-দিকে সোয়াইপ (Swipe Left): প্লেয়ার বাঁ-দিকে যাবে (Lane change)।
         ডানদিকে সোয়াইপ (Swipe Right): প্লেয়ার ডানদিকে যাবে (Lane change)।
         ওপরের দিকে সোয়াইপ (Swipe Up): প্লেয়ার লাফ দেবে (Jump)।
         নিচের দিকে সোয়াইপ (Swipe Down): প্লেয়ার মাটির সাথে স্লাইড করবে (Slide)।
 
-    বাধা বা অবস্ট্যাকল ডিজাইন (Obstacle Design):
-
+    বাধা বা অবস্ট্যাকল ডিজাইন (Obstacle Design): গেমে মূলত **দুই ধরণের** বাধা বা অবস্ট্যাকল আছে এবং সেগুলো ৩টি লেনের (Left, Middle, Right) যেকোনো একটিতে প্রসিডিউরালভাবে জেনারেট হয় ।
         নিচু বাধা (Low Obstacles): যেমন বড় পাথর বা গাছের শিকড়, যেগুলোর ওপর দিয়ে প্লেয়ারকে **লাফ (Jump)** দিয়ে পার হতে হবে।
         উंचे বাধা (High Obstacles): যেমন ভেঙে পড়া প্রাচীন মন্দিরের পিলার বা গাছের নিচু ডাল, যেগুলোর নিচ দিয়ে প্লেয়ারকে **স্লাইড (Slide)** করে পার হতে হবে।
         বাঁক (Turns): হঠাৎ আসা ডানে বা বামে যাওয়ার তীক্ষ্ণ মোড়, যেখানে সঠিক সময়ে সোয়াইপ না করলে প্লেয়ার রাস্তা থেকে নিচে পড়ে যাবে বা দেয়ালে ধাক্কা খাবে।
@@ -33,7 +41,7 @@
         দূরত্ব ও লাইভ স্কোর (Distance/Score Counter): প্লেয়ার কত মিটার দৌড়ালো এবং তার বর্তমান স্কোর কত, তা লাইভ আপডেট হতে থাকবে।
 ---
 
-## প্রোটোটাইপিং ব্লুপ্রিন্ট (Unity 2017): গেমের ডিজাইন পেপারে যেমন থাকে, প্রোটোটাইপিংয়ের মূল উদ্দেশ্য হলো কোনো ফাইনাল গ্রাফিক্স বা আর্ট ছাড়াই গেমের কোর মেকানিক্স (দৌড়ানো, লাফানো, বাধা) কোড দিয়ে কাজ করছে কিনা তা পরীক্ষা করা।
+## প্রোটোটাইপিং ব্লুপ্রিন্ট (Unity 2017): প্রোটোটাইপিংয়ের মূল উদ্দেশ্য হলো কোনো ফাইনাল গ্রাফিক্স বা আর্ট ছাড়াই গেমের কোর মেকানিক্স (দৌড়ানো, লাফানো, বাধা) কোড দিয়ে কাজ করছে কিনা তা পরীক্ষা করা।
 
 ### ১. গেমের মূল মেকানিক্স (Core Mechanics to Test)
 
@@ -69,12 +77,12 @@ public class PlayerController : MonoBehaviour
 
     [Header("Movement Settings")]
     public float forwardSpeed = 10f;
-    public float laneDistance = 2.5f;
+    public float laneDistance = 2f;
     public float laneSwitchSpeed = 10f;
     private int desiredLane = 1;
 
     [Header("Jump Settings")]
-    public float jumpForce = 12f;
+    public float jumpForce = 30f;
     public float gravity = 30f;
     private float verticalVelocity = 0f;
     private bool isGrounded;
@@ -87,6 +95,21 @@ public class PlayerController : MonoBehaviour
     private Vector3 originalCenter;
 
     private Rigidbody rb;
+
+    public int CurrentLane
+    {
+        get { return desiredLane; }
+    }
+
+    public bool IsGroundedProperty
+    {
+        get { return isGrounded; }
+    }
+
+    public bool IsSlidingProperty
+    {
+        get { return isSliding; }
+    }
 
     void Start()
     {
@@ -123,7 +146,7 @@ public class PlayerController : MonoBehaviour
         {
             swipeManager = FindObjectOfType<SwipeManager>();
         }
-        
+
         if (forwardSpeed <= 0) return;
 
         // সোয়াইপ ম্যানেজার থেকে ডেটা রিড করা
@@ -257,7 +280,11 @@ public class MainCamera : MonoBehaviour
 
     void LateUpdate()
     {
-        Vector3 newPosition = new Vector3(transform.position.x, transform.position.y, playerTransform.position.z + offset.z);
+        Vector3 newPosition = new Vector3(
+            transform.position.x, 
+            transform.position.y, 
+            playerTransform.position.z + offset.z
+        );
         transform.position = newPosition;
     }
 }
@@ -275,24 +302,33 @@ using System.Collections.Generic;
 public class TileManager : MonoBehaviour
 {
     [Header("Prefabs & References")]
-    public GameObject tilePrefab;              // রাস্তার বা টাইলের প্রিফ্যাব
-    public GameObject[] obstaclePrefabs;       // বাধাগুলোর প্রিফ্যাব (এখানে Low এবং High দুটি প্রিফ্যাবই ড্রপ করবেন)
-    public Transform playerTransform;          // প্লেয়ারের ট্রান্সফর্ম রেফারেন্স
+    public GameObject tilePrefab;              
+    public GameObject[] obstaclePrefabs;       
+    public Transform playerTransform;          
+    
+    [Header("Grass Settings")]
+    public GameObject grassPrefab;             
+    [Tooltip("কতটি টাইল পর পর ঘাস স্পন হবে? (যেমন: ৩টি টাইল = ৯০ মিটার)")]
+    public int spawnGrassEveryNTiles = 3;      // ৩টি টাইল পর পর ঘাস তৈরি হবে
+    private int tileCounter = 0;               // টাইল কাউন্ট করার জন্য ট্র্যাক রকার
+
+    public float minX_Left = -8f;              
+    public float maxX_Left = -3.5f;            
+    public float minX_Right = 3.5f;            
+    public float maxX_Right = 8f;              
 
     [Header("Tile Settings")]
-    private float spawnZ = 0.0f;               // পরবর্তী টাইলটি কোন Z পজিশনে তৈরি হবে
-    private float tileLength = 30.0f;          // একটি টাইলের দৈর্ঘ্য
-    private int amnTilesOnScreen = 5;          // স্ক্রিনে একসাথে কয়টি টাইল থাকবে
-    private float safeZone = 35.0f;            // প্লেয়ার পেছনের টাইল থেকে কতদূর গেলে নতুন টাইল তৈরি হবে
+    private float spawnZ = 0.0f;               
+    private float tileLength = 30.0f;          
+    private int amnTilesOnScreen = 5;          
+    private float safeZone = 35.0f;            
 
     private List<GameObject> activeTiles = new List<GameObject>();
 
     void Start()
     {
-        // গেমের শুরুতে স্ক্রিনে টাইলগুলো তৈরি করা
         for (int i = 0; i < amnTilesOnScreen; i++)
         {
-            // গেমের একদম শুরুর ১ নম্বর ফাস্ট টাইলে আমরা কোনো বাধা দেব না, যাতে প্লেয়ার একটু সেট হওয়ার সময় পায়
             if (i == 0)
             {
                 SpawnTile(false); 
@@ -306,7 +342,6 @@ public class TileManager : MonoBehaviour
 
     void Update()
     {
-        // প্লেয়ার যখন নির্দিষ্ট দূরত্ব সামনে যাবে, নতুন টাইল তৈরি হবে এবং পেছনেরটা ডিলিট হবে
         if (playerTransform.position.z - safeZone > (spawnZ - amnTilesOnScreen * tileLength))
         {
             SpawnTile(true);
@@ -316,36 +351,61 @@ public class TileManager : MonoBehaviour
 
     private void SpawnTile(bool spawnObstacle)
     {
-        // নতুন টাইল তৈরি করা
         GameObject go = Instantiate(tilePrefab, transform.forward * spawnZ, transform.rotation);
         activeTiles.Add(go);
 
-        // যদি এই টাইলে বাধা তৈরি করতে বলা হয় এবং আমাদের কাছে বাধা থাকে
+        tileCounter++; // নতুন টাইল তৈরি হলেই কাউন্টার ১ বাড়বে
+
+        // ---- ঘাস জেনারেট করার অপ্টিমাইজড লজিক ----
+        // প্রতি ৩ বা ৪টি টাইল (প্রায় ১০০ মিটার) পর পর শুধুমাত্র ১টি ঘাস তৈরি হবে
+        if (grassPrefab != null && tileCounter >= spawnGrassEveryNTiles)
+        {
+            tileCounter = 0; // কাউন্টার রিসেট
+
+            // র্যান্ডমলি সিলেক্ট করা হবে ঘাসটি বামে নাকি ডানে বসবে (১টি ঘাস)
+            float randomX = 0f;
+            if (Random.Range(0, 2) == 0)
+            {
+                randomX = Random.Range(minX_Left, maxX_Left); // বামে
+            }
+            else
+            {
+                randomX = Random.Range(minX_Right, maxX_Right); // ডানে
+            }
+
+            float randomZ = Random.Range(spawnZ, spawnZ + tileLength);
+            Vector3 grassPosition = new Vector3(randomX, grassPrefab.transform.position.y, randomZ);
+
+            Quaternion randomRotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
+            GameObject spawnedGrass = Instantiate(grassPrefab, grassPosition, randomRotation);
+
+            // টাইলের চাইল্ড করা হলো যেন ডিলিট হয়ে যায়
+            spawnedGrass.transform.SetParent(go.transform);
+        }
+
+        // ---- বাধা তৈরি করার লজিক ----
         if (spawnObstacle && obstaclePrefabs.Length > 0)
         {
-            // র্যান্ডমলি যেকোনো একটি বাধা (Low বা High) সিলেক্ট করা
             int randomIndex = Random.Range(0, obstaclePrefabs.Length);
+            int randomPlacement = Random.Range(0, 3);
+            int[] placement= {-2, 2, 0}; 
             GameObject obstacleToSpawn = obstaclePrefabs[randomIndex];
 
-            // বাধাটি টাইলের কোন পজিশনে বসবে (Z axis-এ টাইলের মাঝখান বরাবর এবং Y axis-এ বাধার নিজস্ব হাইট অনুযায়ী)
             Vector3 spawnPosition = new Vector3(
-                0, 
+                placement[randomPlacement], 
                 obstacleToSpawn.transform.position.y, 
-                spawnZ
+                spawnZ + (tileLength / 2f)
             );
 
-            // বাধাটি তৈরি করা এবং সেটিকে টাইলের চাইল্ড (Child) বানিয়ে দেওয়া, যাতে টাইল ডিলিট হলে বাধাও ডিলিট হয়ে যায়
             GameObject spawnedObstacle = Instantiate(obstacleToSpawn, spawnPosition, Quaternion.identity);
             spawnedObstacle.transform.SetParent(go.transform);
         }
 
-        // পরবর্তী টাইলের পজিশন আপডেট করা
         spawnZ += tileLength;
     }
 
     private void DeleteTile()
     {
-        // স্ক্রিনের সবচেয়ে পেছনের টাইলটি মেমোরি থেকে ডিলিট করা
         Destroy(activeTiles[0]);
         activeTiles.RemoveAt(0);
     }
@@ -371,9 +431,8 @@ public class TileManager : MonoBehaviour
  └── ৩. কয়েন, স্কোরিং ও UI আর্কিটেকচার (Data & UI System)
 
  ২.১ টাচ ও সোয়াইপ ইনপুট সিস্টেম (Mobile Touch Input): যেহেতু এটি একটি মোবাইল গেম (Temple Run-এর মতো), তাই কিবোর্ডের বদলে আমাদের Swipe Detection UI কোড লিখতে হবে। আমাদের এমন একটি স্ক্রিপ্ট লাগবে যা স্ক্রিনে আঙুলের টাচ ট্র্যাক করে Swipe Left/Right/Up/Down নিখুঁতভাবে ডিটেক্ট করতে পারে। 
- করা হয়েছেঃ একটি Empty Object তৈরি করে, তাতে স্কৃপ্ট এড করা হয়েছে। এবং সেটিকে প্লেয়ারের রেফারেন্স এ যুক্ত করা হয়েছে।
+ করা হয়েছেঃ একটি Empty Object তৈরি করে, তাতে স্কৃপ্ট এড করা হয়েছে। এবং সেটিকে প্লেয়ারের রেফারেন্স এ যুক্ত করা হয়েছে। SwipeManager.cs
 
- SwipeManager.cs
  ```csharp
 using UnityEngine;
 
@@ -485,3 +544,285 @@ public class SwipeManager : MonoBehaviour
     }
 }
  ---
+
+২.২:  আর্ট, অ্যানিমেশন ও রিয়ালিস্টিক ভিজ্যুয়াল (Art & Polish):
+    a. রাস্টার জন্য টেক্সচারঃ Done;
+    b. রাস্তার পুই পার্শে দেয়ালঃ রাস্তার চাইল্ড হিসেবে এবং তাদের জন্য টেক্সারঃ Done
+    c. অবস্টাকল এর জন্য টেক্সারঃ Done
+    
+    d. প্লেয়ার ক্যাপসুল কে আসল প্লেয়ারে রুপান্তরঃ need to be done.
+    f. Lower Obstacle এর উপরে এবং Higher Obstacle এর নিচে একটা দারুন এনিমেশন রাখা। যাতে মনে হয় মূল্যবান কিছু রাখা আছে সেখানেঃ need to be done. 
+    g. ৫০০ মিটার করে দৌড়ানোর পর প্লেয়ারের স্পিড বাড়তে থাকবেঃ done.
+    h. প্রথম ১০০০ মিটার দৌড়ানোর পরের সব সময়ের জন্য সবুজ আকাশে রাতের গ্যালাক্সি ভেসে উঠবে। এবং ১০-১৫ সেকেন্ড পর পর আকাশে দুটি ডাইনোসর উড়ে যাবে। রাস্তা এবং তার দুই পাশের দেয়াল যেমন আছে , তেমনি থাকবেঃ done.
+
+২.৩: কয়েন, স্কোরিং ও UI আর্কিটেকচার (Data & UI System):
+    a. Distance of running: Done.
+    b. Scoring: Done.
+    c. UI Architecture: need to be done.
+
+
+Other c# file i used in this project:
+
+ObstacleScoring.cs
+```csharp
+using UnityEngine;
+
+public class ObstacleScoring : MonoBehaviour
+{
+    public enum ObstacleType { Low, High }
+    
+    [Header("Obstacle Settings")]
+    public ObstacleType typeOfObstacle; // Inspector থেকে Low বা High সিলেক্ট করার জন্য
+    
+    private int obstacleLane; // অবস্ট্যাকলটি কোন লেনে আছে (0 = Left, 1 = Middle, 2 = Right)
+    private bool pointAwarded = false; // এক বাধার জন্য যেন একাধিকবার পয়েন্ট না আসে
+
+    void Start()
+    {
+        // অবস্ট্যাকলের X পজিশন দেখে তার লেন নির্ধারণ করা (আপনার লেনের ডিসট্যান্স ২ অনুযায়ী)
+        float posX = transform.position.x;
+        
+        if (posX < -1f) obstacleLane = 0;      // Left Lane
+        else if (posX > 1f) obstacleLane = 2;   // Right Lane
+        else obstacleLane = 1;                  // Middle Lane
+    }
+
+    void Update()
+    {
+        // যদি অলরেডি এই বাধা চেক করা হয়ে থাকে, তবে আর কাজ করবে না
+        if (pointAwarded) return;
+
+        // প্লেয়ার অবজেক্ট খুঁজে নেওয়া
+        PlayerController player = FindObjectOfType<PlayerController>();
+        if (player == null) return;
+
+        // প্লেয়ার যখন অবস্ট্যাকলের কাছাকাছি বা জাস্ট পার হয়ে যাবে (Z Axis-এ)
+        if (player.transform.position.z >= transform.position.z - 0.5f)
+        {
+            int playerLane = player.CurrentLane; 
+            bool playerIsJumping = !player.IsGroundedProperty; 
+            bool playerIsSliding = player.IsSlidingProperty; 
+
+            // শর্ত ১: প্লেয়ার আর অবস্ট্যাকল কি একই লেনে আছে?
+            if (playerLane == obstacleLane)
+            {
+                // শর্ত ২: প্লেয়ার কি সঠিক বাধা এড়ানোর নিয়ম মেনেছে?
+                if (typeOfObstacle == ObstacleType.Low && playerIsJumping)
+                {
+                    AwardPoint();
+                }
+                else if (typeOfObstacle == ObstacleType.High && playerIsSliding)
+                {
+                    AwardPoint();
+                }
+                else
+                {
+                    // একই লেনে ছিল কিন্তু প্লেয়ার সঠিক অ্যাকশন নেয়নি 
+                    // (যদিও কোল্ডিশনের কারণে এখানে গেম ওভার হয়ে যাওয়ার কথা, তাও সেফটির জন্য ট্র্যাকিং বন্ধ করা হলো)
+                    pointAwarded = true;
+                }
+            }
+            else
+            {
+                // প্লেয়ার অন্য লেন দিয়ে চলে গেছে (কোনো পয়েন্ট পাবে না)
+                pointAwarded = true; 
+                Debug.Log("[SCORE] Player passed safely via another lane. No points given.");
+            }
+        }
+    }
+
+    void AwardPoint()
+    {
+        pointAwarded = true;
+        ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
+        if (scoreManager != null)
+        {
+            scoreManager.AddScore(1);
+            Debug.Log("[SCORE] Point added! Correct action in correct lane.");
+        }
+    }
+}
+---
+
+ScoreManager.cs 
+```cshaprp
+using UnityEngine;
+using UnityEngine.UI;
+
+public class ScoreManager : MonoBehaviour
+{
+    [Header("References")]
+    public Transform playerTransform;
+    public Text distanceText;
+    public Text scoreText; // New reference for the Score UI
+
+    private float startZPosition;
+    private int score = 0; // Tracks the obstacle score
+
+    void Start()
+    {
+        if (playerTransform != null)
+        {
+            startZPosition = playerTransform.position.z;
+        }
+        UpdateScoreUI();
+    }
+
+    void Update()
+    {
+        if (playerTransform == null || distanceText == null) return;
+
+        float currentDistance = playerTransform.position.z - startZPosition;
+        if (currentDistance < 0) currentDistance = 0;
+
+        distanceText.text = "Distance: " + Mathf.FloorToInt(currentDistance).ToString() + "m";
+    }
+
+    // Public method called by the player script when an obstacle is cleared
+    public void AddScore(int amount)
+    {
+        score += amount;
+        UpdateScoreUI();
+    }
+
+    void UpdateScoreUI()
+    {
+        if (scoreText != null)
+        {
+            scoreText.text = "Score: " + score.ToString();
+        }
+    }
+}
+---
+EffectsManager.cs
+
+```csharp
+using UnityEngine;
+
+public class EffectsManager : MonoBehaviour
+{
+    [Header("Dependencies")]
+    public PlayerController player;
+    public Transform playerTransform;
+
+    [Header("Speed Settings")]
+    [Tooltip("প্রতি কত মিটার পর পর স্পিড বাড়বে")]
+    public float speedIncreaseMilestone = 500f;
+    [Tooltip("প্রতি মাইলস্টোনে কতটুকু স্পিড বাড়বে")]
+    public float speedMultiplier = 2f;
+    [Tooltip("সর্বোচ্চ কত স্পিড পর্যন্ত পৌঁছাতে পারবে")]
+    public float maxSpeed = 30f;
+
+    [Header("Environment Trigger")]
+    [Tooltip("কত মিটার পর আকাশ এবং ডাইনোসর মেকানিক্স চালু হবে")]
+    public float environmentChangeMilestone = 1000f;
+    public Material galaxySkybox; // ইনস্পেক্টর থেকে রাতের গ্যালাক্সি স্কাইবক্স ম্যাটেরিয়াল দিন
+
+    [Header("Dinosaur Settings")]
+    public GameObject dinosaurPrefab; // ডাইনোসর মডেলের প্রিফ্যাব
+    public float spawnInterval = 12f; // ১০-১৫ সেকেন্ডের মাঝামাঝি (১২ সেকেন্ড)
+
+    private float nextSpeedMilestone;
+    private bool isEnvironmentChanged = false;
+    private float dinoTimer = 0f;
+    private float startZ;
+
+    void Start()
+    {
+        if (playerTransform != null)
+        {
+            startZ = playerTransform.position.z;
+        }
+        nextSpeedMilestone = speedIncreaseMilestone;
+    }
+
+    void Update()
+    {
+        if (playerTransform == null || player == null) return;
+
+        // বর্তমান অতিক্রান্ত দূরত্ব হিসাব
+        float currentDistance = playerTransform.position.z - startZ;
+
+        // ---- ১. ৫০০ মিটার পর পর গতি বৃদ্ধি লজিক ----
+        if (currentDistance >= nextSpeedMilestone && player.forwardSpeed > 0)
+        {
+            player.forwardSpeed += speedMultiplier;
+            if (player.forwardSpeed > maxSpeed)
+            {
+                player.forwardSpeed = maxSpeed;
+            }
+            Debug.Log("[SPEED INCREASE] New Speed: " + player.forwardSpeed + " at Distance: " + currentDistance);
+            nextSpeedMilestone += speedIncreaseMilestone;
+        }
+
+        // ---- ২. ১০০০ মিটার পর গ্যালাক্সি স্কাইবক্স লজিক ----
+        if (currentDistance >= environmentChangeMilestone && !isEnvironmentChanged)
+        {
+            TriggerEnvironmentChange();
+        }
+
+        // ---- ৩. ডাইনোসর স্পনিং টাইমার লজিক ----
+        if (isEnvironmentChanged && dinosaurPrefab != null)
+        {
+            dinoTimer += Time.deltaTime;
+            if (dinoTimer >= spawnInterval)
+            {
+                dinoTimer = 0f;
+                SpawnTwoDinosaurs();
+            }
+        }
+    }
+
+    void TriggerEnvironmentChange()
+    {
+        isEnvironmentChanged = true;
+        if (galaxySkybox != null)
+        {
+            RenderSettings.skybox = galaxySkybox;
+            Debug.Log("[ENVIRONMENT] Sky Changed to Galaxy Night!");
+        }
+        else
+        {
+            Debug.LogWarning("[ENVIRONMENT] Galaxy Skybox Material missing in Inspector!");
+        }
+    }
+
+    void SpawnTwoDinosaurs()
+    {
+        Debug.Log("[DINOSAUR] Spawning two dinosaurs in the sky!");
+        
+        // প্লেয়ারের পজিশন থেকে কিছুটা সামনে এবং আকাশে স্পন করা
+        float spawnAheadZ = playerTransform.position.z + 50f; 
+        float skyHeight = 25f; // আকাশ বরাবর উচ্চতা
+
+        // প্রথম ডাইনোসর (বাম থেকে ডানে যাবে)
+        Vector3 pos1 = new Vector3(-30f, skyHeight, spawnAheadZ);
+        GameObject dino1 = Instantiate(dinosaurPrefab, pos1, Quaternion.Euler(0, 90, 0));
+        dino1.AddComponent<DinoFlyer>().Initialize(Vector3.right * 15f, 6f);
+
+        // দ্বিতীয় ডাইনোসর (ডান থেকে বামে যাবে, সামান্য ব্যবধানে)
+        Vector3 pos2 = new Vector3(30f, skyHeight + 3f, spawnAheadZ + 10f);
+        GameObject dino2 = Instantiate(dinosaurPrefab, pos2, Quaternion.Euler(0, -90, 0));
+        dino2.AddComponent<DinoFlyer>().Initialize(Vector3.left * 15f, 6f);
+    }
+}
+
+// ডাইনোসরকে আকাশে সচল রাখার জন্য একটি ছোট হেল্পার ক্লাস
+public class DinoFlyer : MonoBehaviour
+{
+    private Vector3 moveDirection;
+    private float lifeTime;
+
+    public void Initialize(Vector3 direction, float duration)
+    {
+        moveDirection = direction;
+        lifeTime = duration;
+        Destroy(gameObject, lifeTime); // নির্দিষ্ট সময় পর মেমোরি থেকে ডিলিট
+    }
+
+    void Update()
+    {
+        transform.Translate(moveDirection * Time.deltaTime, Space.World);
+    }
+}
+---
