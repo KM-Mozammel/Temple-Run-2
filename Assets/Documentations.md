@@ -66,6 +66,7 @@
 #### ধাপ ৩: ক্যারেক্টার মুভমেন্ট স্ক্রিপ্ট (PlayerController.cs)
 
 প্লেয়ার অবজেক্টের সাথে একটি C# স্ক্রিপ্ট যুক্ত করুন। প্রোটোটাইপের জন্য কিবোর্ডের (A/D বা Left/Right Arrow) ইনপুট ব্যবহার করে লেন চেঞ্জ এবং (Space) দিয়ে জাম্প করার বেসিক লজিক লিখুন:
+File: PlayerController.cs
 
 ```csharp
 using UnityEngine;
@@ -74,6 +75,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("References")]
     public SwipeManager swipeManager;
+    private Animator anim; // ক্যারেক্টার অ্যানিমেশনের জন্য
 
     [Header("Movement Settings")]
     public float forwardSpeed = 10f;
@@ -82,7 +84,7 @@ public class PlayerController : MonoBehaviour
     private int desiredLane = 1;
 
     [Header("Jump Settings")]
-    public float jumpForce = 30f;
+    public float jumpForce = 12f; // Rigidbody ফোর্সের জন্য মান কিছুটা কমানো লাগতে পারে
     public float gravity = 30f;
     private float verticalVelocity = 0f;
     private bool isGrounded;
@@ -115,6 +117,9 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         myCollider = GetComponent<CapsuleCollider>();
+        
+        // চাইল্ড অবজেক্টে থাকা অ্যানিমেটর খুঁজে নেওয়া
+        anim = GetComponentInChildren<Animator>(); 
 
         if (swipeManager == null)
         {
@@ -141,13 +146,17 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Update ফাংশনের ভেতর একদম শুরুতে এটি যোগ করতে পারেন:
         if (swipeManager == null)
         {
             swipeManager = FindObjectOfType<SwipeManager>();
         }
 
-        if (forwardSpeed <= 0) return;
+        if (forwardSpeed <= 0) 
+        {
+            // গতি ০ হলে প্লেয়ার মারা গেছে বা ধাক্কা খেয়েছে, অ্যানিমেটরকে জানানো
+            if(anim != null) anim.SetTrigger("isDead");
+            return;
+        }
 
         // সোয়াইপ ম্যানেজার থেকে ডেটা রিড করা
         bool swipeRight = (swipeManager != null) ? swipeManager.SwipeRight : false;
@@ -155,22 +164,14 @@ public class PlayerController : MonoBehaviour
         bool swipeUp = (swipeManager != null) ? swipeManager.SwipeUp : false;
         bool swipeDown = (swipeManager != null) ? swipeManager.SwipeDown : false;
 
-        // ডিবাগ মেসেজ: প্লেয়ার স্ক্রিপ্ট আসলেই সোয়াইপ ডাটা পাচ্ছে কিনা চেক করা
-        if (swipeLeft || swipeRight || swipeUp || swipeDown)
-        {
-            Debug.Log("[PLAYER RECEIVE] Swipe values in PlayerController -> Left: " + swipeLeft + ", Right: " + swipeRight + ", Up: " + swipeUp + ", Down: " + swipeDown);
-        }
-
         // ---- ১. লেন পরিবর্তনের ইনপুট ----
         if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D) || swipeRight)
         {
-            Debug.Log("[PLAYER ACTION] Moving Right Triggered!");
             desiredLane++;
             if (desiredLane == 3) desiredLane = 2;
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) || swipeLeft)
         {
-            Debug.Log("[PLAYER ACTION] Moving Left Triggered!");
             desiredLane--;
             if (desiredLane == -1) desiredLane = 0;
         }
@@ -182,9 +183,11 @@ public class PlayerController : MonoBehaviour
 
             if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || swipeUp) && !isSliding)
             {
-                Debug.Log("[PLAYER ACTION] Jumping Triggered!");
                 verticalVelocity = jumpForce;
                 isGrounded = false;
+                
+                // অ্যানিমেশন আপডেট
+                if (anim != null) anim.SetBool("isGrounded", false);
             }
         }
         else
@@ -195,7 +198,6 @@ public class PlayerController : MonoBehaviour
         // ---- ৩. স্লাইড ইনপুট ----
         if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || swipeDown) && isGrounded && !isSliding)
         {
-            Debug.Log("[PLAYER ACTION] Sliding Triggered!");
             StartCoroutine(SlideRoutine());
         }
 
@@ -208,9 +210,10 @@ public class PlayerController : MonoBehaviour
         float newY = transform.position.y + (verticalVelocity * Time.deltaTime);
         float newZ = transform.position.z + (forwardSpeed * Time.deltaTime);
 
-        if (newY < 1.0f && isGrounded)
+        // গ্রাউন্ড লেভেল ফিক্সিং (যাতে প্লেয়ার মাটির নিচে না ঢুকে যায়)
+        if (newY < 0.2f && isGrounded) 
         {
-            newY = transform.position.y;
+            newY = 0.2f; // আপনার রোড এর উচ্চতা অনুযায়ী এটি সামঞ্জস্য করতে পারেন
         }
 
         transform.position = new Vector3(newX, newY, newZ);
@@ -219,21 +222,25 @@ public class PlayerController : MonoBehaviour
     private System.Collections.IEnumerator SlideRoutine()
     {
         isSliding = true;
+        if (anim != null) anim.SetBool("isSliding", true); // স্লাইড অ্যানিমেশন শুরু
+
         if (myCollider != null)
         {
+            // স্লাইড করার সময় কোল্ডারের সাইজ অর্ধেক করা যাতে উঁচু বাধার নিচ দিয়ে যাওয়া যায়
             myCollider.height = originalHeight / 2f;
             myCollider.center = new Vector3(originalCenter.x, originalCenter.y / 2f, originalCenter.z);
         }
-        transform.localScale = new Vector3(1f, 0.5f, 1f);
 
         yield return new WaitForSeconds(slideDuration);
 
         if (myCollider != null)
         {
+            // কোল্ডারের সাইজ আগের মতো করা
             myCollider.height = originalHeight;
             myCollider.center = originalCenter;
         }
-        transform.localScale = new Vector3(1f, 1f, 1f);
+        
+        if (anim != null) anim.SetBool("isSliding", false); // স্লাইড অ্যানিমেশন শেষ
         isSliding = false;
     }
 
@@ -242,6 +249,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+            if (anim != null) anim.SetBool("isGrounded", true); // ট্র্যাকিং গ্রাউন্ডেড অ্যানিমেশন
         }
 
         if (collision.gameObject.CompareTag("Obstacle"))
@@ -260,40 +268,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 }
----
-#### ধাপ ৪: ক্যামেরা ফলো স্ক্রিপ্ট (CameraFollow.cs)
-
-ক্যামেরা যেন সবসময় প্লেয়ারের পেছনে একই দূরত্ব বজায় রেখে চলে, তার জন্য `Main Camera`-তে এই স্ক্রিপ্টটি দিন:
-
-```csharp
-using UnityEngine;
-
-public class MainCamera : MonoBehaviour
-{
-    public Transform playerTransform;
-    private Vector3 offset;
-
-    void Start()
-    {
-        offset = transform.position - playerTransform.position;
-    }
-
-    void LateUpdate()
-    {
-        Vector3 newPosition = new Vector3(
-            transform.position.x, 
-            transform.position.y, 
-            playerTransform.position.z + offset.z
-        );
-        transform.position = newPosition;
-    }
-}
-
 ```
-
 #### ধাপ ৫: প্রসিডিউরাল টাইল জেনারেশন (TileManager.cs)
 
 একটি Empty GameObject তৈরি করে এই স্ক্রিপ্টটি দিন, যা প্লেয়ার সামনে যাওয়ার সাথে সাথে নতুন রাস্তার কিউব (Tile) জেনারেট করবে:
+File: TileManager.cs
 
 ```csharp
 using UnityEngine;
@@ -304,7 +283,9 @@ public class TileManager : MonoBehaviour
     [Header("Prefabs & References")]
     public GameObject tilePrefab;              
     public GameObject[] obstaclePrefabs;       
-    public Transform playerTransform;          
+    public Transform playerTransform;
+    [Tooltip("স্পেল এফেক্টের পার্টিকেল প্রিফ্যাব এখানে দিন")]
+    public GameObject spellEffectPrefab;          
     
     [Header("Grass Settings")]
     public GameObject grassPrefab;             
@@ -354,10 +335,9 @@ public class TileManager : MonoBehaviour
         GameObject go = Instantiate(tilePrefab, transform.forward * spawnZ, transform.rotation);
         activeTiles.Add(go);
 
-        tileCounter++; // নতুন টাইল তৈরি হলেই কাউন্টার ১ বাড়বে
+        tileCounter++; // নতুন টাইল তৈরি হলেই কাউন্টার ১ বাড়বে
 
         // ---- ঘাস জেনারেট করার অপ্টিমাইজড লজিক ----
-        // প্রতি ৩ বা ৪টি টাইল (প্রায় ১০০ মিটার) পর পর শুধুমাত্র ১টি ঘাস তৈরি হবে
         if (grassPrefab != null && tileCounter >= spawnGrassEveryNTiles)
         {
             tileCounter = 0; // কাউন্টার রিসেট
@@ -379,16 +359,16 @@ public class TileManager : MonoBehaviour
             Quaternion randomRotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
             GameObject spawnedGrass = Instantiate(grassPrefab, grassPosition, randomRotation);
 
-            // টাইলের চাইল্ড করা হলো যেন ডিলিট হয়ে যায়
+            // টাইলের চাইল্ড করা হলো যেন ডিলিট হয়ে যায়
             spawnedGrass.transform.SetParent(go.transform);
         }
 
-        // ---- বাধা তৈরি করার লজিক ----
+        // ---- বাধা ও স্পেল এফেক্ট তৈরি করার লজিক ----
         if (spawnObstacle && obstaclePrefabs.Length > 0)
         {
             int randomIndex = Random.Range(0, obstaclePrefabs.Length);
             int randomPlacement = Random.Range(0, 3);
-            int[] placement= {-2, 2, 0}; 
+            int[] placement = {-2, 2, 0}; 
             GameObject obstacleToSpawn = obstaclePrefabs[randomIndex];
 
             Vector3 spawnPosition = new Vector3(
@@ -399,6 +379,28 @@ public class TileManager : MonoBehaviour
 
             GameObject spawnedObstacle = Instantiate(obstacleToSpawn, spawnPosition, Quaternion.identity);
             spawnedObstacle.transform.SetParent(go.transform);
+
+            // ---- স্পেল এফেক্ট স্পন করার কাস্টম পার্ট ----
+            if (spellEffectPrefab != null)
+            {
+                Vector3 effectPosition = spawnPosition;
+
+                // অবস্ট্যাকলের ট্যাগ চেক করে এফেক্টের পজিশন ওয়াই-অক্ষ (Y-axis) বরাবর সেট করা হচ্ছে
+                if (obstacleToSpawn.CompareTag("LowerObstacle"))
+                {
+                    // লোয়ার অবস্ট্যাকল (যেমন: পাথর) হলে এফেক্টটি তার ঠিক ওপরে ভাসবে
+                    effectPosition.y = spawnPosition.y + 0.8f; 
+                }
+                else if (obstacleToSpawn.CompareTag("HigherObstacle"))
+                {
+                    // হায়ার অবস্ট্যাকল (যেমন: পিলার) হলে এফেক্টটি নিচে মাটিতে থাকবে
+                    effectPosition.y = 1.0f; // মাটির লেভেল পজিশন
+                }
+
+                // এফেক্টটি ইনস্ট্যান্সিয়েট করা এবং বাধার চাইল্ড করে দেওয়া
+                GameObject spawnedEffect = Instantiate(spellEffectPrefab, effectPosition, Quaternion.identity);
+                spawnedEffect.transform.SetParent(spawnedObstacle.transform);
+            }
         }
 
         spawnZ += tileLength;
@@ -410,7 +412,7 @@ public class TileManager : MonoBehaviour
         activeTiles.RemoveAt(0);
     }
 }
----
+```
 
 ### ৩. প্রোটোটাইপ টেস্টিং চেকলিস্ট (Testing Checklist)
 
@@ -431,8 +433,8 @@ public class TileManager : MonoBehaviour
  └── ৩. কয়েন, স্কোরিং ও UI আর্কিটেকচার (Data & UI System)
 
  ২.১ টাচ ও সোয়াইপ ইনপুট সিস্টেম (Mobile Touch Input): যেহেতু এটি একটি মোবাইল গেম (Temple Run-এর মতো), তাই কিবোর্ডের বদলে আমাদের Swipe Detection UI কোড লিখতে হবে। আমাদের এমন একটি স্ক্রিপ্ট লাগবে যা স্ক্রিনে আঙুলের টাচ ট্র্যাক করে Swipe Left/Right/Up/Down নিখুঁতভাবে ডিটেক্ট করতে পারে। 
- করা হয়েছেঃ একটি Empty Object তৈরি করে, তাতে স্কৃপ্ট এড করা হয়েছে। এবং সেটিকে প্লেয়ারের রেফারেন্স এ যুক্ত করা হয়েছে। SwipeManager.cs
-
+ করা হয়েছেঃ একটি Empty Object তৈরি করে, তাতে স্কৃপ্ট এড করা হয়েছে। এবং সেটিকে প্লেয়ারের রেফারেন্স এ যুক্ত করা হয়েছে। 
+ File: SwipeManager.cs
  ```csharp
 using UnityEngine;
 
@@ -543,14 +545,14 @@ public class SwipeManager : MonoBehaviour
         startTouch = swipeDelta = Vector2.zero;
     }
 }
- ---
+```
 
 ২.২:  আর্ট, অ্যানিমেশন ও রিয়ালিস্টিক ভিজ্যুয়াল (Art & Polish):
     a. রাস্টার জন্য টেক্সচারঃ Done;
     b. রাস্তার পুই পার্শে দেয়ালঃ রাস্তার চাইল্ড হিসেবে এবং তাদের জন্য টেক্সারঃ Done
     c. অবস্টাকল এর জন্য টেক্সারঃ Done
     
-    d. প্লেয়ার ক্যাপসুল কে আসল প্লেয়ারে রুপান্তরঃ need to be done.
+    d. প্লেয়ার ক্যাপসুল কে আসল প্লেয়ারে রুপান্তরঃ Done.
     f. Lower Obstacle এর উপরে এবং Higher Obstacle এর নিচে একটা দারুন এনিমেশন রাখা। যাতে মনে হয় মূল্যবান কিছু রাখা আছে সেখানেঃ need to be done. 
     g. ৫০০ মিটার করে দৌড়ানোর পর প্লেয়ারের স্পিড বাড়তে থাকবেঃ done.
     h. প্রথম ১০০০ মিটার দৌড়ানোর পরের সব সময়ের জন্য সবুজ আকাশে রাতের গ্যালাক্সি ভেসে উঠবে। এবং ১০-১৫ সেকেন্ড পর পর আকাশে দুটি ডাইনোসর উড়ে যাবে। রাস্তা এবং তার দুই পাশের দেয়াল যেমন আছে , তেমনি থাকবেঃ done.
@@ -563,7 +565,7 @@ public class SwipeManager : MonoBehaviour
 
 Other c# file i used in this project:
 
-ObstacleScoring.cs
+File: ObstacleScoring.cs
 ```csharp
 using UnityEngine;
 
@@ -642,10 +644,10 @@ public class ObstacleScoring : MonoBehaviour
         }
     }
 }
----
+```
 
-ScoreManager.cs 
-```cshaprp
+File: ScoreManager.cs 
+```csharp
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -693,7 +695,8 @@ public class ScoreManager : MonoBehaviour
         }
     }
 }
----
+```
+
 EffectsManager.cs
 
 ```csharp
@@ -825,4 +828,4 @@ public class DinoFlyer : MonoBehaviour
         transform.Translate(moveDirection * Time.deltaTime, Space.World);
     }
 }
----
+```
