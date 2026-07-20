@@ -57,6 +57,10 @@ public class ObstacleScoring : MonoBehaviour
                 // অন্য লেন দিয়ে নিরাপদে চলে গেলে নো পয়েন্ট
                 pointAwarded = true;
                 Debug.Log("[SCORE] Player passed safely via another lane. No points given.");
+                if (AudioManager.instance != null)
+                {
+                    AudioManager.instance.PlaySFX(AudioManager.instance.correctActionSound);
+                }
             }
         }
     }
@@ -68,6 +72,11 @@ public class ObstacleScoring : MonoBehaviour
         {
             scoreManager.AddScore(1);
             Debug.Log("[SCORE] Point added! Correct action in correct lane.");
+
+            // if (AudioManager.instance != null)
+            // {
+            //     AudioManager.instance.PlaySFX(AudioManager.instance.correctActionSound);
+            // }
         }
     }
 }

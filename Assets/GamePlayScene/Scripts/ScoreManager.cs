@@ -8,18 +8,18 @@ public class ScoreManager : MonoBehaviour
     public Transform playerTransform;
     public Text distanceText;
     public Text scoreText;
-    
+
     [Header("Game Over UI")]
-    public GameObject gameOverPanel; 
-    public Text finalDistanceText;   
-    public Text finalScoreText;      
+    public GameObject gameOverPanel;
+    public Text finalDistanceText;
+    public Text finalScoreText;
 
     [Header("Animation Settings")]
     [Tooltip("How long the death animation takes to complete before showing the panel")]
-    public float deathAnimationDelay = 2.0f; 
+    public float deathAnimationDelay = 2.0f;
 
     [Header("Scene Navigation")]
-    public string mainMenuSceneName = "StartScene"; 
+    public string mainMenuSceneName = "StartScene";
 
     private float startZPosition;
     private int score = 0;
@@ -27,13 +27,24 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
-        if (gameOverPanel != null) gameOverPanel.SetActive(false); 
-        
+        if (gameOverPanel != null) gameOverPanel.SetActive(false);
+
         if (playerTransform != null)
         {
             startZPosition = playerTransform.position.z;
         }
         UpdateScoreUI();
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoadedAfterRestart;
+    }
+
+    private void OnSceneLoadedAfterRestart(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
+    {
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.ForceRestartBackgroundMusic();
+        }
+        // মেমোরি লিক আটকাতে ইভেন্টটি রিমুভ করে দেওয়া হলো
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoadedAfterRestart;
     }
 
     void Update()
@@ -74,7 +85,21 @@ public class ScoreManager : MonoBehaviour
     private System.Collections.IEnumerator TriggerGameOverRoutine()
     {
         isGameOver = true; // Instantly flag true so Update() stops running logic
-        
+
+        if (AudioManager.instance != null)
+        {
+            if (AudioManager.instance.musicSource != null)
+                AudioManager.instance.musicSource.Stop();
+
+            AudioManager.instance.SetRunningSoundActive(false);
+            AudioManager.instance.PlaySFX(AudioManager.instance.gameOverSound);
+        }
+
+        if (VFXManager.Instance != null && playerTransform != null)
+        {
+            VFXManager.Instance.SpawnEffect(VFXManager.Instance.gameOverFX, playerTransform.position, Quaternion.identity);
+        }
+
         // Wait here while the character plays the death animation
         yield return new WaitForSeconds(deathAnimationDelay);
 
@@ -82,27 +107,27 @@ public class ScoreManager : MonoBehaviour
         float finalDistance = playerTransform.position.z - startZPosition;
         if (finalDistance < 0) finalDistance = 0;
 
-        if (finalDistanceText != null) 
+        if (finalDistanceText != null)
             finalDistanceText.text = "Total Distance: " + Mathf.FloorToInt(finalDistance).ToString() + "m";
-        
-        if (finalScoreText != null) 
+
+        if (finalScoreText != null)
             finalScoreText.text = "Obstacles Cleared: " + score.ToString();
 
-        if (gameOverPanel != null) 
-            gameOverPanel.SetActive(true); 
+        if (gameOverPanel != null)
+            gameOverPanel.SetActive(true);
 
         Time.timeScale = 0f; // Freeze game actions only AFTER the panel appears
     }
 
     public void RestartGame()
     {
-        Time.timeScale = 1f; 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void GoToMainMenu()
     {
-        Time.timeScale = 1f; 
+        Time.timeScale = 1f;
         SceneManager.LoadScene(mainMenuSceneName);
     }
 }

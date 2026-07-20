@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     private Coroutine slideCoroutine;
 
     [Tooltip("The exact name of the Slide state in your Animator Controller")]
-    public string slideAnimationStateName = "Slide"; 
+    public string slideAnimationStateName = "Slide";
 
     private Rigidbody rb;
     private bool isDead = false;
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         myCollider = GetComponent<CapsuleCollider>();
         anim = GetComponentInChildren<Animator>();
-        
+
         if (swipeManager == null)
         {
             swipeManager = FindObjectOfType<SwipeManager>();
@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
 
             if (jumpInput)
             {
-                if (isSliding) 
+                if (isSliding)
                 {
                     StopSlide();
                 }
@@ -123,6 +123,17 @@ public class PlayerController : MonoBehaviour
                 verticalVelocity = jumpForce;
                 isGrounded = false;
                 if (anim != null) anim.SetBool("isGrounded", false);
+
+                if (AudioManager.instance != null)
+                {
+                    AudioManager.instance.PlaySFX(AudioManager.instance.jumpSound);
+                }
+
+                if (VFXManager.Instance != null)
+                {
+                    Vector3 dustPosition = transform.position; // প্লেয়ারের পায়ের নিচের পজিশন
+                    VFXManager.Instance.SpawnEffect(VFXManager.Instance.jumpDustFX, dustPosition, Quaternion.identity);
+                }
             }
             else if (slideInput)
             {
@@ -133,13 +144,33 @@ public class PlayerController : MonoBehaviour
                     StopCoroutine(slideCoroutine);
                     slideCoroutine = null;
                 }
-                
+
+                if (AudioManager.instance != null)
+                {
+                    AudioManager.instance.PlaySFX(AudioManager.instance.slideSound);
+                }
+
                 slideCoroutine = StartCoroutine(SlideRoutine());
             }
         }
         else
         {
             verticalVelocity -= gravity * Time.deltaTime;
+        }
+
+        if (IsGroundedProperty && forwardSpeed > 0f && Time.timeScale > 0f && !isSliding)
+        {
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.SetRunningSoundActive(true);
+            }
+        }
+        else
+        {
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.SetRunningSoundActive(false);
+            }
         }
 
         // ---- 3. Position Calculations & Execution ----
@@ -170,7 +201,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator SlideRoutine()
     {
         isSliding = true;
-        if (anim != null) 
+        if (anim != null)
         {
             anim.SetBool("isSliding", true);
             // Re-trigger the animation instantly from frame zero
