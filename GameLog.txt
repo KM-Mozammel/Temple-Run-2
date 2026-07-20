@@ -1,0 +1,395 @@
+2026-07-20 11:37:37 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 11:37:37 - Start() called.
+2026-07-20 11:37:37 - NamePanel activeSelf: False
+2026-07-20 11:37:37 - MainMenuPanel activeSelf: True
+2026-07-20 11:37:37 - NameInputField assigned: True
+2026-07-20 11:37:37 - WelcomeText assigned: True
+2026-07-20 11:37:37 - No PlayerName found. Showing name panel.
+2026-07-20 11:37:37 - NamePanel setActive(true), MainMenuPanel setActive(false).
+2026-07-20 11:37:56 - SaveNameAndContinue() called.
+2026-07-20 11:37:56 - PlayerName saved: Mozammel
+2026-07-20 11:37:56 - ShowMainMenu() called.
+2026-07-20 11:37:56 - Welcome text updated for: Mozammel
+2026-07-20 11:37:58 - QuitGame() called. Closing application.
+2026-07-20 11:39:40 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 11:39:40 - Cursor set to default pointer.
+2026-07-20 11:39:40 - Start() called.
+2026-07-20 11:39:40 - NamePanel activeSelf: False
+2026-07-20 11:39:40 - MainMenuPanel activeSelf: True
+2026-07-20 11:39:40 - NameInputField assigned: True
+2026-07-20 11:39:40 - WelcomeText assigned: True
+2026-07-20 11:39:40 - PlayerName found: Mozammel
+2026-07-20 11:39:40 - ShowMainMenu() called.
+2026-07-20 11:39:40 - Welcome text updated for: Mozammel
+2026-07-20 11:39:55 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 11:39:55 - Cursor set to default pointer.
+2026-07-20 11:39:55 - Start() called.
+2026-07-20 11:39:55 - NamePanel activeSelf: False
+2026-07-20 11:39:55 - MainMenuPanel activeSelf: True
+2026-07-20 11:39:55 - NameInputField assigned: True
+2026-07-20 11:39:55 - WelcomeText assigned: True
+2026-07-20 11:39:55 - PlayerName found: Mozammel
+2026-07-20 11:39:55 - ShowMainMenu() called.
+2026-07-20 11:39:55 - Welcome text updated for: Mozammel
+2026-07-20 11:40:34 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 11:40:34 - Cursor set to default pointer.
+2026-07-20 11:40:34 - Start() called.
+2026-07-20 11:40:34 - NamePanel activeSelf: False
+2026-07-20 11:40:34 - MainMenuPanel activeSelf: True
+2026-07-20 11:40:34 - NameInputField assigned: True
+2026-07-20 11:40:34 - WelcomeText assigned: True
+2026-07-20 11:40:34 - PlayerName found: Mozammel
+2026-07-20 11:40:34 - ShowMainMenu() called.
+2026-07-20 11:40:34 - Welcome text updated for: Mozammel
+2026-07-20 11:40:36 - QuitGame() called. Closing application.
+2026-07-20 11:46:10 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 11:46:10 - Cursor set to default pointer.
+2026-07-20 11:46:10 - Start() called.
+2026-07-20 11:46:10 - NamePanel activeSelf: False
+2026-07-20 11:46:10 - MainMenuPanel activeSelf: True
+2026-07-20 11:46:10 - NameInputField assigned: True
+2026-07-20 11:46:10 - WelcomeText assigned: True
+2026-07-20 11:46:10 - PlayerName found: Mozammel
+2026-07-20 11:46:10 - ShowMainMenu() called.
+2026-07-20 11:46:10 - Welcome text updated for: Mozammel
+2026-07-20 11:46:11 - QuitGame() called. Closing application.
+2026-07-20 11:54:25 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 11:54:25 - Cursor set to default pointer.
+2026-07-20 11:54:25 - Start() called.
+2026-07-20 11:54:25 - NamePanel activeSelf: False
+2026-07-20 11:54:25 - MainMenuPanel activeSelf: True
+2026-07-20 11:54:25 - NameInputField assigned: True
+2026-07-20 11:54:25 - WelcomeText assigned: True
+2026-07-20 11:54:25 - PlayerName found: Mozammel
+2026-07-20 11:54:25 - ShowMainMenu() called.
+2026-07-20 11:54:25 - Welcome text updated for: Mozammel
+2026-07-20 12:29:53 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 12:29:53 - Cursor set to default pointer.
+2026-07-20 12:29:53 - Start() called.
+2026-07-20 12:29:53 - NamePanel activeSelf: False
+2026-07-20 12:29:53 - MainMenuPanel activeSelf: True
+2026-07-20 12:29:53 - NameInputField assigned: True
+2026-07-20 12:29:53 - WelcomeText assigned: True
+2026-07-20 12:29:53 - PlayerName found: Mozammel
+2026-07-20 12:29:53 - ShowMainMenu() called.
+2026-07-20 12:29:53 - Welcome text updated for: Mozammel
+2026-07-20 12:29:54 - QuitGame() called. Closing application.
+2026-07-20 12:31:43 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 12:31:43 - Cursor set to default pointer.
+2026-07-20 12:31:43 - Start() called.
+2026-07-20 12:31:43 - NamePanel activeSelf: False
+2026-07-20 12:31:43 - MainMenuPanel activeSelf: True
+2026-07-20 12:31:43 - NameInputField assigned: True
+2026-07-20 12:31:43 - WelcomeText assigned: True
+2026-07-20 12:31:43 - PlayerName found: Mozammel
+2026-07-20 12:31:43 - ShowMainMenu() called.
+2026-07-20 12:31:43 - Welcome text updated for: Mozammel
+2026-07-20 12:31:45 - QuitGame() called. Closing application.
+2026-07-20 12:54:08 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 12:54:09 - Cursor set to default pointer.
+2026-07-20 12:54:09 - Start() called.
+2026-07-20 12:54:09 - NamePanel activeSelf: False
+2026-07-20 12:54:09 - MainMenuPanel activeSelf: True
+2026-07-20 12:54:09 - NameInputField assigned: True
+2026-07-20 12:54:09 - WelcomeText assigned: True
+2026-07-20 12:54:09 - PlayerName found: Mozammel
+2026-07-20 12:54:09 - ShowMainMenu() called.
+2026-07-20 12:54:09 - Welcome text updated for: Mozammel
+2026-07-20 12:54:10 - QuitGame() called. Closing application.
+2026-07-20 13:10:32 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 13:10:32 - Cursor set to default pointer.
+2026-07-20 13:10:32 - Start() called.
+2026-07-20 13:10:32 - NamePanel activeSelf: False
+2026-07-20 13:10:32 - MainMenuPanel activeSelf: True
+2026-07-20 13:10:32 - NameInputField assigned: True
+2026-07-20 13:10:32 - WelcomeText assigned: True
+2026-07-20 13:10:32 - PlayerName found: Mozammel
+2026-07-20 13:10:32 - ShowMainMenu() called.
+2026-07-20 13:10:32 - Welcome text updated for: Mozammel
+2026-07-20 13:11:51 - PlayGame() called. Loading scene: Gameplay
+2026-07-20 13:12:24 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 13:12:24 - Cursor set to default pointer.
+2026-07-20 13:12:24 - Start() called.
+2026-07-20 13:12:24 - NamePanel activeSelf: False
+2026-07-20 13:12:24 - MainMenuPanel activeSelf: True
+2026-07-20 13:12:24 - NameInputField assigned: True
+2026-07-20 13:12:24 - WelcomeText assigned: True
+2026-07-20 13:12:24 - PlayerName found: Mozammel
+2026-07-20 13:12:24 - ShowMainMenu() called.
+2026-07-20 13:12:24 - Welcome text updated for: Mozammel
+2026-07-20 13:12:26 - QuitGame() called. Closing application.
+2026-07-20 13:15:41 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 13:15:41 - Cursor set to default pointer.
+2026-07-20 13:15:41 - Start() called.
+2026-07-20 13:15:41 - NamePanel activeSelf: False
+2026-07-20 13:15:41 - MainMenuPanel activeSelf: True
+2026-07-20 13:15:41 - NameInputField assigned: True
+2026-07-20 13:15:41 - WelcomeText assigned: True
+2026-07-20 13:15:41 - PlayerName found: Mozammel
+2026-07-20 13:15:41 - ShowMainMenu() called.
+2026-07-20 13:15:41 - Welcome text updated for: Mozammel
+2026-07-20 13:15:41 - QuitGame() called. Closing application.
+2026-07-20 13:17:59 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 13:17:59 - Cursor set to default pointer.
+2026-07-20 13:17:59 - Start() called.
+2026-07-20 13:17:59 - NamePanel activeSelf: False
+2026-07-20 13:17:59 - MainMenuPanel activeSelf: True
+2026-07-20 13:17:59 - NameInputField assigned: True
+2026-07-20 13:17:59 - WelcomeText assigned: True
+2026-07-20 13:17:59 - PlayerName found: Mozammel
+2026-07-20 13:17:59 - ShowMainMenu() called.
+2026-07-20 13:17:59 - Welcome text updated for: Mozammel
+2026-07-20 13:18:00 - QuitGame() called. Closing application.
+2026-07-20 13:19:20 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 13:19:20 - Cursor set to default pointer.
+2026-07-20 13:19:20 - Start() called.
+2026-07-20 13:19:20 - NamePanel activeSelf: False
+2026-07-20 13:19:20 - MainMenuPanel activeSelf: True
+2026-07-20 13:19:20 - NameInputField assigned: True
+2026-07-20 13:19:20 - WelcomeText assigned: True
+2026-07-20 13:19:20 - PlayerName found: Mozammel
+2026-07-20 13:19:20 - ShowMainMenu() called.
+2026-07-20 13:19:20 - Welcome text updated for: Mozammel
+2026-07-20 13:19:23 - QuitGame() called. Closing application.
+2026-07-20 13:27:40 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 13:27:40 - Cursor set to default pointer.
+2026-07-20 13:27:40 - Start() called.
+2026-07-20 13:27:40 - NamePanel activeSelf: False
+2026-07-20 13:27:40 - MainMenuPanel activeSelf: True
+2026-07-20 13:27:40 - NameInputField assigned: True
+2026-07-20 13:27:40 - WelcomeText assigned: True
+2026-07-20 13:27:40 - PlayerName found: Mozammel
+2026-07-20 13:27:40 - ShowMainMenu() called.
+2026-07-20 13:27:40 - Welcome text updated for: Mozammel
+2026-07-20 13:30:05 - QuitGame() called. Closing application.
+2026-07-20 13:34:15 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 13:34:15 - Cursor set to default pointer.
+2026-07-20 13:34:15 - Start() called.
+2026-07-20 13:34:15 - NamePanel activeSelf: False
+2026-07-20 13:34:15 - MainMenuPanel activeSelf: True
+2026-07-20 13:34:15 - NameInputField assigned: True
+2026-07-20 13:34:15 - WelcomeText assigned: True
+2026-07-20 13:34:15 - PlayerName found: Mozammel
+2026-07-20 13:34:15 - ShowMainMenu() called.
+2026-07-20 13:34:15 - Welcome text updated for: Mozammel
+2026-07-20 13:34:16 - QuitGame() called. Closing application.
+2026-07-20 13:45:31 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 13:45:31 - Cursor set to default pointer.
+2026-07-20 13:45:31 - Start() called.
+2026-07-20 13:45:31 - NamePanel activeSelf: False
+2026-07-20 13:45:31 - MainMenuPanel activeSelf: True
+2026-07-20 13:45:31 - NameInputField assigned: True
+2026-07-20 13:45:31 - WelcomeText assigned: True
+2026-07-20 13:45:31 - PlayerName found: Mozammel
+2026-07-20 13:45:31 - ShowMainMenu() called.
+2026-07-20 13:45:31 - Welcome text updated for: Mozammel
+2026-07-20 13:45:32 - QuitGame() called. Closing application.
+2026-07-20 13:51:44 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 13:51:44 - Cursor set to default pointer.
+2026-07-20 13:51:44 - Start() called.
+2026-07-20 13:51:44 - NamePanel activeSelf: False
+2026-07-20 13:51:44 - MainMenuPanel activeSelf: True
+2026-07-20 13:51:44 - NameInputField assigned: True
+2026-07-20 13:51:44 - WelcomeText assigned: True
+2026-07-20 13:51:44 - PlayerName found: Mozammel
+2026-07-20 13:51:44 - ShowMainMenu() called.
+2026-07-20 13:51:44 - Welcome text updated for: Mozammel
+2026-07-20 13:51:46 - QuitGame() called. Closing application.
+2026-07-20 13:52:30 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 13:52:30 - Cursor set to default pointer.
+2026-07-20 13:52:30 - Start() called.
+2026-07-20 13:52:30 - NamePanel activeSelf: False
+2026-07-20 13:52:30 - MainMenuPanel activeSelf: True
+2026-07-20 13:52:30 - NameInputField assigned: True
+2026-07-20 13:52:30 - WelcomeText assigned: True
+2026-07-20 13:52:30 - PlayerName found: Mozammel
+2026-07-20 13:52:30 - ShowMainMenu() called.
+2026-07-20 13:52:30 - Welcome text updated for: Mozammel
+2026-07-20 13:52:32 - QuitGame() called. Closing application.
+2026-07-20 14:06:13 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 14:06:13 - Cursor set to default pointer.
+2026-07-20 14:06:13 - Start() called.
+2026-07-20 14:06:13 - NamePanel activeSelf: False
+2026-07-20 14:06:13 - MainMenuPanel activeSelf: True
+2026-07-20 14:06:13 - NameInputField assigned: True
+2026-07-20 14:06:13 - WelcomeText assigned: True
+2026-07-20 14:06:13 - PlayerName found: Mozammel
+2026-07-20 14:06:13 - ShowMainMenu() called.
+2026-07-20 14:06:13 - Welcome text updated for: Mozammel
+2026-07-20 14:06:16 - PlayGame() called. Loading scene: Gameplay
+2026-07-20 14:27:53 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 14:27:53 - Cursor set to default pointer.
+2026-07-20 14:27:53 - Start() called.
+2026-07-20 14:27:53 - NamePanel activeSelf: False
+2026-07-20 14:27:53 - MainMenuPanel activeSelf: True
+2026-07-20 14:27:53 - NameInputField assigned: True
+2026-07-20 14:27:53 - WelcomeText assigned: True
+2026-07-20 14:27:53 - PlayerName found: Mozammel
+2026-07-20 14:27:53 - ShowMainMenu() called.
+2026-07-20 14:27:53 - Welcome text updated for: Mozammel
+2026-07-20 14:27:54 - QuitGame() called. Closing application.
+2026-07-20 14:32:18 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 14:32:19 - Cursor set to default pointer.
+2026-07-20 14:32:19 - Start() called.
+2026-07-20 14:32:19 - NamePanel activeSelf: False
+2026-07-20 14:32:19 - MainMenuPanel activeSelf: True
+2026-07-20 14:32:19 - NameInputField assigned: True
+2026-07-20 14:32:19 - WelcomeText assigned: True
+2026-07-20 14:32:19 - PlayerName found: Mozammel
+2026-07-20 14:32:19 - ShowMainMenu() called.
+2026-07-20 14:32:19 - Welcome text updated for: Mozammel
+2026-07-20 14:32:20 - QuitGame() called. Closing application.
+2026-07-20 14:44:14 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 14:44:14 - Cursor set to default pointer.
+2026-07-20 14:44:14 - Start() called.
+2026-07-20 14:44:14 - NamePanel activeSelf: False
+2026-07-20 14:44:14 - MainMenuPanel activeSelf: True
+2026-07-20 14:44:14 - NameInputField assigned: True
+2026-07-20 14:44:14 - WelcomeText assigned: True
+2026-07-20 14:44:14 - PlayerName found: Mozammel
+2026-07-20 14:44:14 - ShowMainMenu() called.
+2026-07-20 14:44:14 - Welcome text updated for: Mozammel
+2026-07-20 14:44:16 - QuitGame() called. Closing application.
+2026-07-20 14:50:55 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 14:50:56 - Cursor set to default pointer.
+2026-07-20 14:50:56 - Start() called.
+2026-07-20 14:50:56 - NamePanel activeSelf: False
+2026-07-20 14:50:56 - MainMenuPanel activeSelf: True
+2026-07-20 14:50:56 - NameInputField assigned: True
+2026-07-20 14:50:56 - WelcomeText assigned: True
+2026-07-20 14:50:56 - PlayerName found: Mozammel
+2026-07-20 14:50:56 - ShowMainMenu() called.
+2026-07-20 14:50:56 - Welcome text updated for: Mozammel
+2026-07-20 14:50:57 - QuitGame() called. Closing application.
+2026-07-20 14:53:19 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 14:53:19 - Cursor set to default pointer.
+2026-07-20 14:53:19 - Start() called.
+2026-07-20 14:53:19 - NamePanel activeSelf: False
+2026-07-20 14:53:19 - MainMenuPanel activeSelf: True
+2026-07-20 14:53:19 - NameInputField assigned: True
+2026-07-20 14:53:19 - WelcomeText assigned: True
+2026-07-20 14:53:19 - PlayerName found: Mozammel
+2026-07-20 14:53:19 - ShowMainMenu() called.
+2026-07-20 14:53:19 - Welcome text updated for: Mozammel
+2026-07-20 14:53:21 - QuitGame() called. Closing application.
+2026-07-20 14:56:36 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 14:56:36 - Cursor set to default pointer.
+2026-07-20 14:56:36 - Start() called.
+2026-07-20 14:56:36 - NamePanel activeSelf: False
+2026-07-20 14:56:36 - MainMenuPanel activeSelf: True
+2026-07-20 14:56:36 - NameInputField assigned: True
+2026-07-20 14:56:36 - WelcomeText assigned: True
+2026-07-20 14:56:36 - PlayerName found: Mozammel
+2026-07-20 14:56:36 - ShowMainMenu() called.
+2026-07-20 14:56:36 - Welcome text updated for: Mozammel
+2026-07-20 14:56:38 - QuitGame() called. Closing application.
+2026-07-20 15:07:53 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 15:07:53 - Cursor set to default pointer.
+2026-07-20 15:07:53 - Start() called.
+2026-07-20 15:07:53 - NamePanel activeSelf: False
+2026-07-20 15:07:53 - MainMenuPanel activeSelf: True
+2026-07-20 15:07:53 - NameInputField assigned: True
+2026-07-20 15:07:53 - WelcomeText assigned: True
+2026-07-20 15:07:53 - PlayerName found: Mozammel
+2026-07-20 15:07:53 - ShowMainMenu() called.
+2026-07-20 15:07:53 - Welcome text updated for: Mozammel
+2026-07-20 15:07:54 - QuitGame() called. Closing application.
+2026-07-20 15:10:00 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 15:10:00 - Cursor set to default pointer.
+2026-07-20 15:10:00 - Start() called.
+2026-07-20 15:10:00 - NamePanel activeSelf: False
+2026-07-20 15:10:00 - MainMenuPanel activeSelf: True
+2026-07-20 15:10:00 - NameInputField assigned: True
+2026-07-20 15:10:00 - WelcomeText assigned: True
+2026-07-20 15:10:00 - PlayerName found: Mozammel
+2026-07-20 15:10:00 - ShowMainMenu() called.
+2026-07-20 15:10:00 - Welcome text updated for: Mozammel
+2026-07-20 15:10:01 - QuitGame() called. Closing application.
+2026-07-20 15:12:37 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 15:12:37 - Cursor set to default pointer.
+2026-07-20 15:12:37 - Start() called.
+2026-07-20 15:12:37 - NamePanel activeSelf: False
+2026-07-20 15:12:37 - MainMenuPanel activeSelf: True
+2026-07-20 15:12:37 - NameInputField assigned: True
+2026-07-20 15:12:37 - WelcomeText assigned: True
+2026-07-20 15:12:37 - PlayerName found: Mozammel
+2026-07-20 15:12:37 - ShowMainMenu() called.
+2026-07-20 15:12:37 - Welcome text updated for: Mozammel
+2026-07-20 15:12:38 - QuitGame() called. Closing application.
+2026-07-20 15:16:49 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 15:16:49 - Cursor set to default pointer.
+2026-07-20 15:16:49 - Start() called.
+2026-07-20 15:16:49 - NamePanel activeSelf: False
+2026-07-20 15:16:49 - MainMenuPanel activeSelf: True
+2026-07-20 15:16:49 - NameInputField assigned: True
+2026-07-20 15:16:49 - WelcomeText assigned: True
+2026-07-20 15:16:49 - PlayerName found: Mozammel
+2026-07-20 15:16:49 - ShowMainMenu() called.
+2026-07-20 15:16:49 - Welcome text updated for: Mozammel
+2026-07-20 15:16:51 - QuitGame() called. Closing application.
+2026-07-20 15:21:47 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 15:21:47 - Cursor set to default pointer.
+2026-07-20 15:21:47 - Start() called.
+2026-07-20 15:21:47 - NamePanel activeSelf: False
+2026-07-20 15:21:47 - MainMenuPanel activeSelf: True
+2026-07-20 15:21:47 - NameInputField assigned: True
+2026-07-20 15:21:47 - WelcomeText assigned: True
+2026-07-20 15:21:47 - PlayerName found: Mozammel
+2026-07-20 15:21:47 - ShowMainMenu() called.
+2026-07-20 15:21:47 - Welcome text updated for: Mozammel
+2026-07-20 15:21:48 - QuitGame() called. Closing application.
+2026-07-20 15:23:18 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 15:23:18 - Cursor set to default pointer.
+2026-07-20 15:23:18 - Start() called.
+2026-07-20 15:23:18 - NamePanel activeSelf: False
+2026-07-20 15:23:18 - MainMenuPanel activeSelf: True
+2026-07-20 15:23:18 - NameInputField assigned: True
+2026-07-20 15:23:18 - WelcomeText assigned: True
+2026-07-20 15:23:18 - PlayerName found: Mozammel
+2026-07-20 15:23:18 - ShowMainMenu() called.
+2026-07-20 15:23:18 - Welcome text updated for: Mozammel
+2026-07-20 15:23:20 - QuitGame() called. Closing application.
+2026-07-20 15:31:16 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 15:31:16 - Cursor set to default pointer.
+2026-07-20 15:31:16 - Start() called.
+2026-07-20 15:31:16 - NamePanel activeSelf: False
+2026-07-20 15:31:16 - MainMenuPanel activeSelf: True
+2026-07-20 15:31:16 - NameInputField assigned: True
+2026-07-20 15:31:16 - WelcomeText assigned: True
+2026-07-20 15:31:16 - PlayerName found: Mozammel
+2026-07-20 15:31:16 - ShowMainMenu() called.
+2026-07-20 15:31:16 - Welcome text updated for: Mozammel
+2026-07-20 15:31:17 - QuitGame() called. Closing application.
+2026-07-20 15:39:00 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 15:39:00 - Cursor set to default pointer.
+2026-07-20 15:39:00 - Start() called.
+2026-07-20 15:39:00 - NamePanel activeSelf: False
+2026-07-20 15:39:00 - MainMenuPanel activeSelf: True
+2026-07-20 15:39:00 - NameInputField assigned: True
+2026-07-20 15:39:00 - WelcomeText assigned: True
+2026-07-20 15:39:00 - PlayerName found: Mozammel
+2026-07-20 15:39:00 - ShowMainMenu() called.
+2026-07-20 15:39:00 - Welcome text updated for: Mozammel
+2026-07-20 15:39:01 - QuitGame() called. Closing application.
+2026-07-20 15:44:32 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 15:44:32 - Cursor set to default pointer.
+2026-07-20 15:44:32 - Start() called.
+2026-07-20 15:44:32 - NamePanel activeSelf: False
+2026-07-20 15:44:32 - MainMenuPanel activeSelf: True
+2026-07-20 15:44:32 - NameInputField assigned: True
+2026-07-20 15:44:32 - WelcomeText assigned: True
+2026-07-20 15:44:32 - PlayerName found: Mozammel
+2026-07-20 15:44:32 - ShowMainMenu() called.
+2026-07-20 15:44:32 - Welcome text updated for: Mozammel
+2026-07-20 15:44:32 - QuitGame() called. Closing application.
+2026-07-20 15:54:17 - Game started. Log file created at: D:\Projects\2026\Temple-Run-2\GameLog.txt
+2026-07-20 15:54:17 - Cursor set to default pointer.
+2026-07-20 15:54:17 - Start() called.
+2026-07-20 15:54:17 - NamePanel activeSelf: False
+2026-07-20 15:54:17 - MainMenuPanel activeSelf: True
+2026-07-20 15:54:17 - NameInputField assigned: True
+2026-07-20 15:54:17 - WelcomeText assigned: True
+2026-07-20 15:54:17 - PlayerName found: Mozammel
+2026-07-20 15:54:17 - ShowMainMenu() called.
+2026-07-20 15:54:17 - Welcome text updated for: Mozammel
+2026-07-20 15:54:18 - QuitGame() called. Closing application.

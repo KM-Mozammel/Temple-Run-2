@@ -112,7 +112,7 @@ public class TileManager : MonoBehaviour
                 if (obstacleToSpawn.CompareTag("LowerObstacle"))
                 {
                     // লোয়ার অবস্ট্যাকল (যেমন: পাথর) হলে এফেক্টটি তার ঠিক ওপরে ভাসবে
-                    effectPosition.y = spawnPosition.y + 0.8f; 
+                    effectPosition.y = spawnPosition.y + 2.3f; 
                 }
                 else if (obstacleToSpawn.CompareTag("HigherObstacle"))
                 {

@@ -217,11 +217,31 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Boy01_Mouth_MAT2
     second: {fileID: 2100000, guid: 854fe906bd3658a4bb3b521236ad4889, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Boy01_FacialAnimMap
+    second: {fileID: 2800000, guid: 6dd4d353fb4a4754888387043dc81541, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Boy01_diffuse
+    second: {fileID: 2800000, guid: 8ff0a6f76de72934a87d450aeac1c983, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Boy01_normal
+    second: {fileID: 2800000, guid: bb6bdd95d4b253c4182a04d3a26702e6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Boy01_spec
+    second: {fileID: 2800000, guid: 5bc98b63481034040837255f8762de1d, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0

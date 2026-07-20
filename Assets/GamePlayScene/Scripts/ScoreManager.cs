@@ -14,8 +14,12 @@ public class ScoreManager : MonoBehaviour
     public Text finalDistanceText;   
     public Text finalScoreText;      
 
+    [Header("Animation Settings")]
+    [Tooltip("How long the death animation takes to complete before showing the panel")]
+    public float deathAnimationDelay = 2.0f; 
+
     [Header("Scene Navigation")]
-    public string mainMenuSceneName = "StartScene"; // স্টার্ট সিনের নাম
+    public string mainMenuSceneName = "StartScene"; 
 
     private float startZPosition;
     private int score = 0;
@@ -40,7 +44,8 @@ public class ScoreManager : MonoBehaviour
         PlayerController player = playerTransform.GetComponent<PlayerController>();
         if (player != null && player.forwardSpeed <= 0f)
         {
-            TriggerGameOver();
+            // Start the coroutine instead of calling the method directly
+            StartCoroutine(TriggerGameOverRoutine());
             return;
         }
 
@@ -65,10 +70,15 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    void TriggerGameOver()
+    // Changed into a Coroutine to create a delay
+    private System.Collections.IEnumerator TriggerGameOverRoutine()
     {
-        isGameOver = true;
+        isGameOver = true; // Instantly flag true so Update() stops running logic
         
+        // Wait here while the character plays the death animation
+        yield return new WaitForSeconds(deathAnimationDelay);
+
+        // Calculate and show final values after the wait window
         float finalDistance = playerTransform.position.z - startZPosition;
         if (finalDistance < 0) finalDistance = 0;
 
@@ -81,7 +91,7 @@ public class ScoreManager : MonoBehaviour
         if (gameOverPanel != null) 
             gameOverPanel.SetActive(true); 
 
-        Time.timeScale = 0f; // গেম ওভার স্ক্রিন আসার সাথে সাথে গেম ফ্রিজ করা
+        Time.timeScale = 0f; // Freeze game actions only AFTER the panel appears
     }
 
     public void RestartGame()
@@ -90,10 +100,9 @@ public class ScoreManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
     }
 
-    // --- নতুন যোগ করা ফাংশন: মেইন মেনু বা স্টার্ট সিনে ফিরে যাওয়ার জন্য ---
     public void GoToMainMenu()
     {
-        Time.timeScale = 1f; // টাইম স্কেল নরমাল করা যাতে মেইন মেনু ফ্রিজ না থাকে
+        Time.timeScale = 1f; 
         SceneManager.LoadScene(mainMenuSceneName);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -13,59 +14,136 @@ public class MainMenuController : MonoBehaviour
     public Text welcomeText;
 
     [Header("Scene Settings")]
-    public string gameplaySceneName = "Gameplay"; // আপনার মেইন গেমপ্লে সিনের নাম
+    public string gameplaySceneName = "Gameplay";
+
+    // Path for log file (same folder as .exe)
+    private string logFilePath;
+
+    void Awake()
+    {
+        // Application.dataPath points to "<exeFolder>/YourGame_Data"
+        // So we go one directory up to reach the .exe folder
+        string exeFolder = Directory.GetParent(Application.dataPath).FullName;
+        logFilePath = Path.Combine(exeFolder, "GameLog.txt");
+
+        Log("Game started. Log file created at: " + logFilePath);
+    }
 
     void Start()
     {
-        // PlayerPrefs ব্যবহার করে চেক করা হচ্ছে প্লেয়ার আগে নাম সেভ করেছে কিনা
-        if (!PlayerPrefs.HasKey("PlayerName"))
+        try
         {
-            // প্রথমবার গেম ওপেন করলে নামের প্যানেল দেখাবে, মেনু হাইড থাকবে
-            namePanel.SetActive(true);
-            mainMenuPanel.SetActive(false);
+            // Force default pointer
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            Log("Cursor set to default pointer.");
+
+            Log("Start() called.");
+
+            // Log panel states
+            Log("NamePanel activeSelf: " + (namePanel != null && namePanel.activeSelf));
+            Log("MainMenuPanel activeSelf: " + (mainMenuPanel != null && mainMenuPanel.activeSelf));
+
+            // Log input field and text references
+            Log("NameInputField assigned: " + (nameInputField != null));
+            Log("WelcomeText assigned: " + (welcomeText != null));
+
+            if (!PlayerPrefs.HasKey("PlayerName"))
+            {
+                Log("No PlayerName found. Showing name panel.");
+                namePanel.SetActive(true);
+                mainMenuPanel.SetActive(false);
+                Log("NamePanel setActive(true), MainMenuPanel setActive(false).");
+            }
+            else
+            {
+                Log("PlayerName found: " + PlayerPrefs.GetString("PlayerName"));
+                ShowMainMenu();
+            }
         }
-        else
+        catch (System.Exception ex)
         {
-            // নাম অলরেডি থাকলে সরাসরি মূল মেনু দেখাবে
-            ShowMainMenu();
+            Log("Error in Start(): " + ex.Message);
         }
     }
 
-    // SubmitNameButton-এর অন-ক্লিক ইভেন্টে এটি যুক্ত হবে
     public void SaveNameAndContinue()
     {
-        string playerName = nameInputField.text.Trim();
+        try
+        {
+            Log("SaveNameAndContinue() called.");
+            string playerName = nameInputField.text.Trim();
 
-        if (!string.IsNullOrEmpty(playerName))
-        {
-            // নাম সেভ করে রাখা হচ্ছে যাতে পরের বার আর না চায়
-            PlayerPrefs.SetString("PlayerName", playerName);
-            PlayerPrefs.Save();
-            
-            ShowMainMenu();
+            if (!string.IsNullOrEmpty(playerName))
+            {
+                PlayerPrefs.SetString("PlayerName", playerName);
+                PlayerPrefs.Save();
+                Log("PlayerName saved: " + playerName);
+                ShowMainMenu();
+            }
+            else
+            {
+                Log("Name input was empty.");
+            }
         }
-        else
+        catch (System.Exception ex)
         {
-            Debug.LogWarning("Name cannot be empty!");
+            Log("Error in SaveNameAndContinue(): " + ex.Message);
         }
     }
 
     void ShowMainMenu()
     {
-        namePanel.SetActive(false);
-        mainMenuPanel.SetActive(true);
-
-        // প্লেয়ারকে নাম ধরে স্বাগত জানানো
-        if (welcomeText != null)
+        try
         {
-            welcomeText.text = "স্বাগতম, " + PlayerPrefs.GetString("PlayerName") + "!";
+            Log("ShowMainMenu() called.");
+            namePanel.SetActive(false);
+            mainMenuPanel.SetActive(true);
+
+            if (welcomeText != null)
+            {
+                string playerName = PlayerPrefs.GetString("PlayerName");
+                welcomeText.text = "Welcome, " + playerName + "!";
+                Log("Welcome text updated for: " + playerName);
+            }
+        }
+        catch (System.Exception ex)
+        {
+            Log("Error in ShowMainMenu(): " + ex.Message);
         }
     }
 
-    // PlayButton-এর অন-ক্লিক ইভেন্টে এটি যুক্ত হবে
     public void PlayGame()
     {
-        Time.timeScale = 1f; // কোনো কারণে টাইম স্কেল পজ থাকলে সচল করা
-        SceneManager.LoadScene(gameplaySceneName); // গেমপ্লে সিন লোড
+        try
+        {
+            Log("PlayGame() called. Loading scene: " + gameplaySceneName);
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(gameplaySceneName);
+        }
+        catch (System.Exception ex)
+        {
+            Log("Error in PlayGame(): " + ex.Message);
+        }
+    }
+
+    // Custom logger method
+    private void Log(string message)
+    {
+        string logEntry = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " - " + message;
+        Debug.Log(logEntry); // still visible in Unity console
+        File.AppendAllText(logFilePath, logEntry + "\n");
+    }
+
+    public void QuitGame()
+    {
+        Log("QuitGame() called. Closing application.");
+        Application.Quit();
+
+        // For testing in Editor only
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #endif
     }
 }
