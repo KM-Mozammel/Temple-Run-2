@@ -24,11 +24,9 @@ public class SwipeManager : MonoBehaviour
             tap = true;
             isDraging = true;
             startTouch = Input.mousePosition;
-            Debug.Log("[SWIPE MANAGER] Mouse Down Registered at: " + startTouch);
         }
         else if (Input.GetMouseButtonUp(0))
         {
-            Debug.Log("[SWIPE MANAGER] Mouse Up Registered. Total Drag Delta before reset: " + swipeDelta);
             isDraging = false;
             ResetSwipe();
         }
@@ -67,19 +65,15 @@ public class SwipeManager : MonoBehaviour
             float x = swipeDelta.x;
             float y = swipeDelta.y;
 
-            Debug.Log("[SWIPE MANAGER] Deadzone Crossed! Delta Magnitude: " + swipeDelta.magnitude + " (X: " + x + ", Y: " + y + ")");
-
             if (Mathf.Abs(x) > Mathf.Abs(y))
             {
                 if (x < 0)
                 {
                     swipeLeft = true;
-                    Debug.Log("[SWIPE MANAGER] Swipe LEFT set to TRUE");
                 }
                 else
                 {
                     swipeRight = true;
-                    Debug.Log("[SWIPE MANAGER] Swipe RIGHT set to TRUE");
                 }
             }
             else
@@ -87,12 +81,10 @@ public class SwipeManager : MonoBehaviour
                 if (y < 0)
                 {
                     swipeDown = true;
-                    Debug.Log("[SWIPE MANAGER] Swipe DOWN set to TRUE");
                 }
                 else
                 {
                     swipeUp = true;
-                    Debug.Log("[SWIPE MANAGER] Swipe UP set to TRUE");
                 }
             }
 

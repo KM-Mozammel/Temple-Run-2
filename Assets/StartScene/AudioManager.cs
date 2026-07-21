@@ -90,8 +90,6 @@ public class AudioManager : MonoBehaviour
 
     private void LoadAudioResources()
     {
-        Debug.Log("[AUDIO MANAGER] Loading audio clips from Resources folder...");
-
         backgroundMusic = Resources.Load<AudioClip>("bg_music");
         runningSound = Resources.Load<AudioClip>("sfx_run"); // নতুন: 'sfx_run' লোড করা হচ্ছে
         jumpSound = Resources.Load<AudioClip>("sfx_jump");
@@ -106,14 +104,6 @@ public class AudioManager : MonoBehaviour
             runningSource.clip = runningSound;
             runningSource.loop = true;
         }
-
-        if (backgroundMusic != null)
-            Debug.Log("[AUDIO MANAGER] SUCCESS: bg_music loaded successfully!");
-        else
-            Debug.LogError("[AUDIO MANAGER] ERROR: Failed to load 'bg_music' from Resources folder!");
-
-        if (runningSound == null)
-            Debug.LogWarning("[AUDIO MANAGER] WARNING: 'sfx_run' not found in Resources folder.");
     }
 
     public void PlayBackgroundMusic()
@@ -129,7 +119,6 @@ public class AudioManager : MonoBehaviour
             if (!musicSource.isPlaying)
             {
                 musicSource.Play();
-                Debug.Log("[AUDIO MANAGER] bg_music forced to play/resume after scene reload.");
             }
         }
     }
@@ -167,8 +156,6 @@ public class AudioManager : MonoBehaviour
     {
         if (musicSource != null && backgroundMusic != null)
         {
-            Debug.Log("[AUDIO MANAGER] ForceRestartBackgroundMusic triggered after scene reload.");
-
             musicSource.Stop();
             musicSource.clip = backgroundMusic;
             musicSource.loop = true;
@@ -180,8 +167,6 @@ public class AudioManager : MonoBehaviour
             {
                 runningSource.Stop();
             }
-
-            Debug.Log("[AUDIO MANAGER] bg_music successfully forced to play from scratch.");
         }
     }
 }

@@ -52,7 +52,6 @@ public class EffectsManager : MonoBehaviour
             {
                 player.forwardSpeed = maxSpeed;
             }
-            Debug.Log("[SPEED INCREASE] New Speed: " + player.forwardSpeed + " at Distance: " + currentDistance);
             nextSpeedMilestone += speedIncreaseMilestone;
         }
 
@@ -80,18 +79,11 @@ public class EffectsManager : MonoBehaviour
         if (galaxySkybox != null)
         {
             RenderSettings.skybox = galaxySkybox;
-            Debug.Log("[ENVIRONMENT] Sky Changed to Galaxy Night!");
-        }
-        else
-        {
-            Debug.LogWarning("[ENVIRONMENT] Galaxy Skybox Material missing in Inspector!");
         }
     }
 
     void SpawnTwoDinosaurs()
     {
-        Debug.Log("[DINOSAUR] Spawning two dinosaurs in the sky!");
-        
         // প্লেয়ারের পজিশন থেকে কিছুটা সামনে এবং আকাশে স্পন করা
         float spawnAheadZ = playerTransform.position.z + 50f; 
         float skyHeight = 25f; // আকাশ বরাবর উচ্চতা
